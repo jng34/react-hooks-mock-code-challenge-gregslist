@@ -1,11 +1,20 @@
 import React from "react";
-// import ListingCard from "./ListingCard";
+import ListingCard from "./ListingCard";
 
-function ListingsContainer() {
+function ListingsContainer({ lists, updateDeletedList, onSortListings }) {
+
+  const listings = lists.map((item) => (
+    <ListingCard key={item.id} id={item.id} description={item.description} image={item.image} location={item.location} handleDeleteList={updateDeletedList}/>
+  ))
+
+  //Advanced deliverable - sorting alphabetically
+  // const listSorter = <button type="button">Sort Alphabetically</button> 
+
   return (
     <main>
+      <button type="button" onClick={onSortListings}>Sort Alphabetically</button> 
       <ul className="cards">
-        {/* use the ListingCard component to display listings */}
+        {listings}
       </ul>
     </main>
   );
